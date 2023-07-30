@@ -234,7 +234,7 @@ public class giveCommand implements CommandExecutor, TabCompleter {
             }
         } catch (Exception e) {
             Player player = (Player) sender;
-            player.sendMessage(ChatColor.RED + "Please include a subcommand such as" + ChatColor.GOLD + "\"give\"" + ChatColor.RED + " or " + ChatColor.GOLD + "\"gui\"");
+            player.sendMessage(ChatColor.RED + "Please include a subcommand such as " + ChatColor.GOLD + "\"give\"" + ChatColor.RED + " or " + ChatColor.GOLD + "\"gui\"");
         }
         return true;
     }
