@@ -4,6 +4,7 @@ import java.util.Random;
 import me.notjoshy.minecraftdungeonitems.minecraftdungeonitems.MinecraftDungeonItems;
 import org.bukkit.Location;
 import org.bukkit.World;
+import org.bukkit.entity.Animals;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -19,7 +20,6 @@ public class PotionDrop implements Listener {
     public PotionDrop(MinecraftDungeonItems plugin) {
         this.plugin = plugin;
     }
-
     @EventHandler
     public void kill(final EntityDamageEvent e) {
         (new BukkitRunnable() {

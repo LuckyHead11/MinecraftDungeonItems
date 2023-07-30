@@ -55,22 +55,22 @@ import org.bukkit.potion.PotionType;
 
      print("Initializing Events");
      getServer().getPluginManager().registerEvents((Listener)new MenuHandler(this), (Plugin)this);
-     getServer().getPluginManager().registerEvents((Listener)new StormLander(), (Plugin)this);
-     getServer().getPluginManager().registerEvents((Listener)new FireBrand(), (Plugin)this);
-     getServer().getPluginManager().registerEvents((Listener)new WhirlWind(), (Plugin)this);
+     getServer().getPluginManager().registerEvents((Listener)new StormLander(this), (Plugin)this);
+     getServer().getPluginManager().registerEvents((Listener)new FireBrand(this), (Plugin)this);
+     getServer().getPluginManager().registerEvents((Listener)new WhirlWind(this), (Plugin)this);
      getServer().getPluginManager().registerEvents((Listener)new golem_kit(this), (Plugin)this);
-     getServer().getPluginManager().registerEvents((Listener)new LightFeather(), (Plugin)this);
-     getServer().getPluginManager().registerEvents((Listener)new totem_of_regeneration(), (Plugin)this);
-     getServer().getPluginManager().registerEvents((Listener)new windhorn(), (Plugin)this);
-     getServer().getPluginManager().registerEvents((Listener)new lightning_rod(), (Plugin)this);
-     getServer().getPluginManager().registerEvents((Listener)new corrupted_seeds(), (Plugin)this);
-     getServer().getPluginManager().registerEvents((Listener)new FireWorkArrow(), (Plugin)this);
-     getServer().getPluginManager().registerEvents((Listener)new wither_armor(), (Plugin)this);
+     getServer().getPluginManager().registerEvents((Listener)new LightFeather(this), (Plugin)this);
+     getServer().getPluginManager().registerEvents((Listener)new totem_of_regeneration(this), (Plugin)this);
+     getServer().getPluginManager().registerEvents((Listener)new windhorn(this), (Plugin)this);
+     getServer().getPluginManager().registerEvents((Listener)new lightning_rod(this), (Plugin)this);
+     getServer().getPluginManager().registerEvents((Listener)new corrupted_seeds(this), (Plugin)this);
+     getServer().getPluginManager().registerEvents((Listener)new FireWorkArrow(this), (Plugin)this);
+     getServer().getPluginManager().registerEvents((Listener)new wither_armor(this), (Plugin)this);
      getServer().getPluginManager().registerEvents((Listener)new SatchelOfElements(this), (Plugin)this);
-     getServer().getPluginManager().registerEvents((Listener)new kong_of_weakening(), (Plugin)this);
-     getServer().getPluginManager().registerEvents((Listener)new nameless_blade(), (Plugin)this);
+     getServer().getPluginManager().registerEvents((Listener)new kong_of_weakening(this), (Plugin)this);
+     getServer().getPluginManager().registerEvents((Listener)new nameless_blade(this), (Plugin)this);
      getServer().getPluginManager().registerEvents((Listener)new ice_wand(this), (Plugin)this);
-     getServer().getPluginManager().registerEvents((Listener)new rapid_crossbow(), (Plugin)this);
+     getServer().getPluginManager().registerEvents((Listener)new rapid_crossbow(this), (Plugin)this);
 
      getServer().getPluginManager().registerEvents((Listener)new FoodDrop(this), (Plugin)this);
      getServer().getPluginManager().registerEvents((Listener)new PotionDrop(this), (Plugin)this);
@@ -545,7 +545,7 @@ import org.bukkit.potion.PotionType;
 
      ItemStack item1 = new ItemStack(Material.PUMPKIN);
      ItemMeta meta1 = item1.getItemMeta();
-     meta1.setDisplayName(ChatColor.GOLD + "GolemKit");
+     meta1.setDisplayName(ChatColor.GOLD + getConfig().getString("artifact-names.golem-kit"));
      ArrayList<String> lore1 = new ArrayList<>();
      lore1.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "Spawn Iron Golems for 10s!");
      lore1.add(ChatColor.GREEN + "SPECIAL: Has a 30% Chance to set fire nearby enemies when it dies");
@@ -555,7 +555,7 @@ import org.bukkit.potion.PotionType;
 
      ItemStack item2 = new ItemStack(Material.DIAMOND_BOOTS);
      ItemMeta meta2 = item2.getItemMeta();
-     meta2.setDisplayName(ChatColor.GOLD + "SpeedBoots");
+     meta2.setDisplayName(ChatColor.GOLD + getConfig().getString("artifact-names.speed-boots"));
      ArrayList<String> lore2 = new ArrayList<>();
      lore2.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "Where these to gain speed!");
      meta2.setLore(lore2);
@@ -565,7 +565,7 @@ import org.bukkit.potion.PotionType;
 
      ItemStack item3 = new ItemStack(Material.FIREWORK_ROCKET);
      ItemMeta meta3 = item3.getItemMeta();
-     meta3.setDisplayName(ChatColor.GOLD + "Firework arrows");
+     meta3.setDisplayName(ChatColor.GOLD + getConfig().getString("artifact-names.fire-work-arrow"));
      ArrayList<String> lore3 = new ArrayList<>();
      lore3.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "Shoots out fireworks!");
      meta3.setLore(lore3);
@@ -574,7 +574,7 @@ import org.bukkit.potion.PotionType;
 
      ItemStack item4 = new ItemStack(Material.POTION);
      ItemMeta meta4 = item4.getItemMeta();
-     meta4.setDisplayName(ChatColor.GOLD + "Satchel of elements");
+     meta4.setDisplayName(ChatColor.GOLD + getConfig().getString("artifact-names.satchel-of-elements"));
      ArrayList<String> lore4 = new ArrayList<>();
      lore4.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "Has a change to lightning or setFire to mobs!");
      meta4.setLore(lore4);
@@ -606,7 +606,7 @@ import org.bukkit.potion.PotionType;
 
      ItemStack item1 = new ItemStack(Material.FEATHER);
      ItemMeta meta1 = item1.getItemMeta();
-     meta1.setDisplayName(ChatColor.GOLD + "LightFeather");
+     meta1.setDisplayName(ChatColor.GOLD + getConfig().getString("artifact-names.light-feather"));
      ArrayList<String> lore1 = new ArrayList<>();
      lore1.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "Boosts you up!");
      meta1.setLore(lore1);
@@ -616,7 +616,7 @@ import org.bukkit.potion.PotionType;
 
      ItemStack item2 = new ItemStack(Material.APPLE);
      ItemMeta meta2 = item2.getItemMeta();
-     meta2.setDisplayName(ChatColor.GOLD + "Totem of Regeneration");
+     meta2.setDisplayName(ChatColor.GOLD + getConfig().getString("artifact-names.totem-of-regeneration"));
      ArrayList<String> lore2 = new ArrayList<>();
      lore2.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "Spawns a regenerationPad");
      meta2.setLore(lore2);
@@ -626,7 +626,7 @@ import org.bukkit.potion.PotionType;
 
      ItemStack item3 = new ItemStack(Material.END_ROD);
      ItemMeta meta3 = item3.getItemMeta();
-     meta3.setDisplayName(ChatColor.GOLD + "Lightning Rod");
+     meta3.setDisplayName(ChatColor.GOLD + getConfig().getString("artifact-names.lightning-rod"));
      ArrayList<String> lore3 = new ArrayList<>();
      lore3.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "Spawns lightning wherever you look!");
      meta3.setLore(lore3);
@@ -636,7 +636,7 @@ import org.bukkit.potion.PotionType;
 
      ItemStack item4 = new ItemStack(Material.FEATHER);
      ItemMeta meta4 = item4.getItemMeta();
-     meta4.setDisplayName(ChatColor.GOLD + "WindHorn");
+     meta4.setDisplayName(ChatColor.GOLD + getConfig().getString("artifact-names.wind-horn"));
      ArrayList<String> lore4 = new ArrayList<>();
      lore4.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "Blows entitys away!");
      meta4.setLore(lore4);
@@ -645,7 +645,7 @@ import org.bukkit.potion.PotionType;
 
      ItemStack item5 = new ItemStack(Material.POTION);
      ItemMeta meta5 = item5.getItemMeta();
-     meta5.setDisplayName(ChatColor.GOLD + "Corrupted Seeds");
+     meta5.setDisplayName(ChatColor.GOLD + getConfig().getString("artifact-names.corrupted-seeds"));
      ArrayList<String> lore5 = new ArrayList<>();
      lore5.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "Spawns a poison cloud!");
      meta5.setLore(lore5);
@@ -654,7 +654,7 @@ import org.bukkit.potion.PotionType;
 
      ItemStack item6 = new ItemStack(Material.STICK);
      ItemMeta meta6 = item6.getItemMeta();
-     meta6.setDisplayName(ChatColor.GOLD + "Ice Wand");
+     meta6.setDisplayName(ChatColor.GOLD + getConfig().getString("artifact-names.ice-wand"));
      ArrayList<String> lore6 = new ArrayList<>();
      lore6.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "Look at a enemy and click! Its now frozen!");
      meta6.setLore(lore6);
@@ -663,7 +663,7 @@ import org.bukkit.potion.PotionType;
 
      ItemStack item7 = new ItemStack(Material.BELL);
      ItemMeta meta7 = item7.getItemMeta();
-     meta1.setDisplayName(ChatColor.GOLD + "Kong of weakening");
+     meta1.setDisplayName(ChatColor.GOLD + getConfig().getString("artifact-names.kong-of-weakening"));
      ArrayList<String> lore7 = new ArrayList<>();
      lore7.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "Weakens nearby enemys!");
      meta7.setLore(lore7);
@@ -823,7 +823,7 @@ import org.bukkit.potion.PotionType;
 
      ItemStack item1 = new ItemStack(Material.NETHERITE_CHESTPLATE);
      ItemMeta meta1 = item1.getItemMeta();
-     meta1.setDisplayName(ChatColor.GOLD + "Ember Robe");
+     meta1.setDisplayName(ChatColor.GOLD + getConfig().getString("armor-names.ember-robe"));
      ArrayList<String> lore1 = new ArrayList<>();
      lore1.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "When you get near entities they get set on fire!");
 
@@ -833,7 +833,7 @@ import org.bukkit.potion.PotionType;
 
      ItemStack item2 = new ItemStack(Material.NETHERITE_CHESTPLATE);
      ItemMeta meta2 = item2.getItemMeta();
-     meta2.setDisplayName(ChatColor.GOLD + "Wither armor");
+     meta2.setDisplayName(ChatColor.GOLD + getConfig().getString("armor-names.wither-armor"));
      ArrayList<String> lore2 = new ArrayList<>();
      lore2.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "Shoot wither skulls with a simple click!");
      lore2.add(ChatColor.GREEN + "SPECIAL: " + ChatColor.GREEN + "Immune to wither affect");
@@ -936,7 +936,7 @@ import org.bukkit.potion.PotionType;
 
      ItemStack item1 = new ItemStack(Material.CROSSBOW);
      ItemMeta meta1 = item1.getItemMeta();
-     meta1.setDisplayName(ChatColor.GOLD + "Rapid Crossbow");
+     meta1.setDisplayName(ChatColor.GOLD + getConfig().getString("bow-names.rapid-crossbow"));
      ArrayList<String> lore1 = new ArrayList<>();
      lore1.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "Shoot like crazy!");
      lore1.add(ChatColor.GOLD + "SPECIAL: " + ChatColor.GREEN + "Does more damage the more health you have!");

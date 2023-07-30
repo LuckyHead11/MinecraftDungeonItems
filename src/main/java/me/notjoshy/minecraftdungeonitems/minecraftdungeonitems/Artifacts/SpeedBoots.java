@@ -29,7 +29,7 @@ import org.bukkit.Bukkit;
 /* 29 */           for (Player player : Bukkit.getOnlinePlayers()) {
 /* 30 */             ItemStack item = new ItemStack(Material.DIAMOND_BOOTS);
 /* 31 */             ItemMeta meta = item.getItemMeta();
-/* 32 */             meta.setDisplayName(ChatColor.GOLD + "SpeedBoots");
+/* 32 */             meta.setDisplayName(ChatColor.GOLD + plugin.getConfig().getString("artifact-names.speed-boots"));
 /* 33 */             ArrayList<String> lore = new ArrayList<>();
 /* 34 */             lore.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "Where these to gain speed!");
 /* 35 */             meta.setLore(lore);

@@ -31,7 +31,7 @@ import org.bukkit.ChatColor;
 /* 31 */     Random rand = new Random();
 /* 32 */     ItemStack item = new ItemStack(Material.POTION);
 /* 33 */     ItemMeta meta = item.getItemMeta();
-/* 34 */     meta.setDisplayName(ChatColor.GOLD + "Satchel of elements");
+/* 34 */     meta.setDisplayName(ChatColor.GOLD + plugin.getConfig().getString("artifact-names.satchel-of-elements"));
 /* 35 */     ArrayList<String> lore = new ArrayList<>();
 /* 36 */     lore.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "Has a change to lightning or setFire to mobs!");
 /* 37 */     meta.setLore(lore);

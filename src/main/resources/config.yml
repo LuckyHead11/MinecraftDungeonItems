@@ -1,10 +1,32 @@
 food-drops:
-  drop-food: false
-  food-amount: 1
-  #Only do 25,50,75 or 100 :D
+  drop-food: true
+  food-amount: 2
+  # Only do 25,50,75 or 100 :D
   food-chance: 25
 potion-drops:
   drop-potion: false
   potion-amount: 1
-  #Only do 25,50,75 or 100 :D
+  # Only do 25,50,75 or 100 :D
   potion-chance: 25
+armor-names:
+  ember-robe: "Ember Robe"
+  wither-armor: "Wither Armor"
+artifact-names:
+  corrupted-seeds: "Corrupted Seeds"
+  fire-work-arrow: "Firework Arrows"
+  golem-kit: "Golem Kit"
+  ice-wand: "Ice Wand"
+  kong-of-weakening: "Kong of Weakening"
+  light-feather: "Light Feather"
+  lightning-rod: "Lightning Rod"
+  satchel-of-elements: "Satchel of Elements"
+  speed-boots: "Speed Boots"
+  totem-of-regeneration: "Totem of Regeneration"
+  wind-horn: "Wind Horn"
+bow-names:
+  rapid-crossbow: "Rapid Crossbow"
+weapon-names:
+  fire-brand: "Fire Brand"
+  nameless-blade: "Nameless Blade"
+  storm-lander: "Storm Lander"
+  whirl-wind: "Whirl Wind"
