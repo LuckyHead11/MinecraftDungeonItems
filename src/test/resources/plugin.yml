@@ -1,0 +1,10 @@
+name: MinecraftDungeons
+version: 1.0-SNAPSHOT
+main: me.notjoshy.minecraftdungeonitems.MinecraftDungeons
+api-version: 1.16
+description: Have MinecraftDungeons Items in Minecraft
+commands:
+  mcd:
+    description: Give all the minecraft dungeon Items!
+    aliases:
+      - minecraftdungeons

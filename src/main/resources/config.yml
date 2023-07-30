@@ -1,0 +1,10 @@
+food-drops:
+  drop-food: false
+  food-amount: 1
+  #Only do 25,50,75 or 100 :D
+  food-chance: 25
+potion-drops:
+  drop-potion: false
+  potion-amount: 1
+  #Only do 25,50,75 or 100 :D
+  potion-chance: 25
