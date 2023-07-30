@@ -37,7 +37,7 @@ import org.bukkit.scheduler.BukkitTask;
 /* 33 */     final Random rand = new Random();
 /* 34 */     ItemStack item = new ItemStack(Material.PUMPKIN);
 /* 35 */     ItemMeta meta = item.getItemMeta();
-/* 36 */     meta.setDisplayName(ChatColor.GOLD + "GolemKit");
+/* 36 */     meta.setDisplayName(ChatColor.GOLD + plugin.getConfig().getString("artifact-names.golem-kit"));
 /* 37 */     ArrayList<String> lore = new ArrayList<>();
 /* 38 */     lore.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "Spawn Iron Golems for 10s!");
 /* 39 */     lore.add(ChatColor.GREEN + "SPECIAL: Has a 30% Chance to set fire nearby enemies when it dies");

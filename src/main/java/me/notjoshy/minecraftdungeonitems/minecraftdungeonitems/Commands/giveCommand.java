@@ -29,7 +29,7 @@ public class giveCommand implements CommandExecutor, TabCompleter {
                 if (args[1].equals("StormLander")) {
                     ItemStack item = new ItemStack(Material.NETHERITE_AXE);
                     ItemMeta meta = item.getItemMeta();
-                    meta.setDisplayName(ChatColor.GOLD + "StormLander");
+                    meta.setDisplayName(ChatColor.GOLD + plugin.getConfig().getString("weapon-names.storm-lander"));
                     ArrayList<String> lore = new ArrayList<>();
                     lore.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "Spawns lightning on entity attack");
                     meta.setLore(lore);
@@ -42,7 +42,7 @@ public class giveCommand implements CommandExecutor, TabCompleter {
                     ItemMeta meta = item.getItemMeta();
                     meta.setDisplayName(ChatColor.GOLD + "FireBrand");
                     ArrayList<String> lore = new ArrayList<>();
-                    lore.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "Makes entity catch on fire");
+                    lore.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + plugin.getConfig().getString("weapon-names.fire-brand"));
                     meta.setLore(lore);
                     item.setItemMeta(meta);
                     player.sendMessage("There you go!");
@@ -51,7 +51,7 @@ public class giveCommand implements CommandExecutor, TabCompleter {
                 } else if (args[1].equals("WhirlWind")) {
                     ItemStack item = new ItemStack(Material.NETHERITE_AXE);
                     ItemMeta meta = item.getItemMeta();
-                    meta.setDisplayName(ChatColor.GOLD + "WhirlWind");
+                    meta.setDisplayName(ChatColor.GOLD + plugin.getConfig().getString("weapon-names.whirl-wind"));
                     ArrayList<String> lore = new ArrayList<>();
                     lore.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "Super super super super POWERFUL weapon");
                     meta.setLore(lore);
@@ -62,7 +62,7 @@ public class giveCommand implements CommandExecutor, TabCompleter {
                 } else if (args[1].equals("GolemKit")) {
                     ItemStack item = new ItemStack(Material.PUMPKIN);
                     ItemMeta meta = item.getItemMeta();
-                    meta.setDisplayName(ChatColor.GOLD + "GolemKit");
+                    meta.setDisplayName(ChatColor.GOLD + plugin.getConfig().getString("artifact-names.golem-kit"));
                     ArrayList<String> lore = new ArrayList<>();
                     lore.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "Spawn Iron Golems for 10s!");
                     lore.add(ChatColor.GREEN + "SPECIAL: Has a 30% Chance to set fire nearby enemies when it dies");
@@ -74,7 +74,7 @@ public class giveCommand implements CommandExecutor, TabCompleter {
                 } else if (args[1].equals("LightFeather")) {
                     ItemStack item = new ItemStack(Material.FEATHER);
                     ItemMeta meta = item.getItemMeta();
-                    meta.setDisplayName(ChatColor.GOLD + "LightFeather");
+                    meta.setDisplayName(ChatColor.GOLD + plugin.getConfig().getString("artifact-names.light-feather"));
                     ArrayList<String> lore = new ArrayList<>();
                     lore.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "Boosts you up!");
                     meta.setLore(lore);
@@ -85,7 +85,7 @@ public class giveCommand implements CommandExecutor, TabCompleter {
                 } else if (args[1].equals("totem_of_regeneration")) {
                     ItemStack item = new ItemStack(Material.APPLE);
                     ItemMeta meta = item.getItemMeta();
-                    meta.setDisplayName(ChatColor.GOLD + "Totem of Regeneration");
+                    meta.setDisplayName(ChatColor.GOLD + plugin.getConfig().getString("artifact-names.totem-of-regeneration"));
                     ArrayList<String> lore = new ArrayList<>();
                     lore.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "Spawns a regenerationPad");
                     meta.setLore(lore);
@@ -96,7 +96,7 @@ public class giveCommand implements CommandExecutor, TabCompleter {
                 } else if (args[1].equals("WindHorn")) {
                     ItemStack item = new ItemStack(Material.FEATHER);
                     ItemMeta meta = item.getItemMeta();
-                    meta.setDisplayName(ChatColor.GOLD + "WindHorn");
+                    meta.setDisplayName(ChatColor.GOLD + plugin.getConfig().getString("artifact-names.wind-horn"));
                     ArrayList<String> lore = new ArrayList<>();
                     lore.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "Blows entitys away!");
                     meta.setLore(lore);
@@ -107,7 +107,7 @@ public class giveCommand implements CommandExecutor, TabCompleter {
                 } else if (args[1].equals("lightning_rod")) {
                     ItemStack item = new ItemStack(Material.END_ROD);
                     ItemMeta meta = item.getItemMeta();
-                    meta.setDisplayName(ChatColor.GOLD + "Lightning Rod");
+                    meta.setDisplayName(ChatColor.GOLD + plugin.getConfig().getString("artifact-names.lightning-rod"));
                     ArrayList<String> lore = new ArrayList<>();
                     lore.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "Spawns lightning wherever you look!");
                     meta.setLore(lore);
@@ -118,7 +118,7 @@ public class giveCommand implements CommandExecutor, TabCompleter {
                 } else if (args[1].equals("SpeedBoots")) {
                     ItemStack item = new ItemStack(Material.DIAMOND_BOOTS);
                     ItemMeta meta = item.getItemMeta();
-                    meta.setDisplayName(ChatColor.GOLD + "SpeedBoots");
+                    meta.setDisplayName(ChatColor.GOLD + plugin.getConfig().getString("artifact-names.speed-boots"));
                     ArrayList<String> lore = new ArrayList<>();
                     lore.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "Where these to gain speed!");
                     meta.setLore(lore);
@@ -129,7 +129,7 @@ public class giveCommand implements CommandExecutor, TabCompleter {
                 } else if (args[1].equals("corrupted_seeds")) {
                     ItemStack item = new ItemStack(Material.POTION);
                     ItemMeta meta = item.getItemMeta();
-                    meta.setDisplayName(ChatColor.GOLD + "Corrupted Seeds");
+                    meta.setDisplayName(ChatColor.GOLD + plugin.getConfig().getString("artifact-names.corrupted-seeds"));
                     ArrayList<String> lore = new ArrayList<>();
                     lore.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "Spawns a poison cloud!");
                     meta.setLore(lore);
@@ -140,7 +140,7 @@ public class giveCommand implements CommandExecutor, TabCompleter {
                 } else if (args[1].equals("firework_arrow")) {
                     ItemStack item = new ItemStack(Material.FIREWORK_ROCKET);
                     ItemMeta meta = item.getItemMeta();
-                    meta.setDisplayName(ChatColor.GOLD + "Firework arrows");
+                    meta.setDisplayName(ChatColor.GOLD + plugin.getConfig().getString("artifact-names.fire-work-arrow"));
                     ArrayList<String> lore = new ArrayList<>();
                     lore.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "Shoots out fireworks!");
                     meta.setLore(lore);
@@ -151,7 +151,7 @@ public class giveCommand implements CommandExecutor, TabCompleter {
                 } else if (args[1].equals("ember_robe")) {
                     ItemStack item = new ItemStack(Material.NETHERITE_CHESTPLATE);
                     ItemMeta meta = item.getItemMeta();
-                    meta.setDisplayName(ChatColor.GOLD + "Ember Robe");
+                    meta.setDisplayName(ChatColor.GOLD + plugin.getConfig().getString("armor-names.ember-robe"));
                     ArrayList<String> lore = new ArrayList<>();
                     lore.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "When you get near entities they get set on fire!");
                     meta.setLore(lore);
@@ -162,7 +162,7 @@ public class giveCommand implements CommandExecutor, TabCompleter {
                 } else if (args[1].equals("wither_armor")) {
                     ItemStack item = new ItemStack(Material.NETHERITE_CHESTPLATE);
                     ItemMeta meta = item.getItemMeta();
-                    meta.setDisplayName(ChatColor.GOLD + "Wither armor");
+                    meta.setDisplayName(ChatColor.GOLD + plugin.getConfig().getString("armor-names.wither-armor"));
                     ArrayList<String> lore = new ArrayList<>();
                     lore.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "Shoot wither skulls with a simple click!");
                     lore.add(ChatColor.GREEN + "SPECIAL: " + ChatColor.GREEN + "Immune to wither affect");
@@ -176,7 +176,7 @@ public class giveCommand implements CommandExecutor, TabCompleter {
                     ItemMeta meta = item.getItemMeta();
                     meta.setDisplayName(ChatColor.GOLD + "Satchel of elements");
                     ArrayList<String> lore = new ArrayList<>();
-                    lore.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "Has a chance to lightning or setFire to mobs!");
+                    lore.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + plugin.getConfig().getString("artifact-names.satchel-of-elements"));
                     meta.setLore(lore);
                     item.setItemMeta(meta);
                     player.sendMessage("There you go!");
@@ -185,7 +185,7 @@ public class giveCommand implements CommandExecutor, TabCompleter {
                 } else if (args[1].equals("kong_of_weakening")) {
                     ItemStack item = new ItemStack(Material.BELL);
                     ItemMeta meta = item.getItemMeta();
-                    meta.setDisplayName(ChatColor.GOLD + "Kong of weakening");
+                    meta.setDisplayName(ChatColor.GOLD + plugin.getConfig().getString("artifact-names.kong-of-weakening"));
                     ArrayList<String> lore = new ArrayList<>();
                     lore.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "Weakens nearby enemys!");
                     meta.setLore(lore);
@@ -196,7 +196,7 @@ public class giveCommand implements CommandExecutor, TabCompleter {
                 } else if (args[1].equals("nameless_blade")) {
                     ItemStack item = new ItemStack(Material.NETHERITE_SWORD);
                     ItemMeta meta = item.getItemMeta();
-                    meta.setDisplayName(ChatColor.GOLD + "Nameless Blade");
+                    meta.setDisplayName(ChatColor.GOLD + plugin.getConfig().getString("weapon-names.nameless-blade"));
                     ArrayList<String> lore = new ArrayList<>();
                     lore.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "On attack, it weakens enemy's!");
                     meta.setLore(lore);
@@ -207,7 +207,7 @@ public class giveCommand implements CommandExecutor, TabCompleter {
                 } else if (args[1].equals("ice_wand")) {
                     ItemStack item = new ItemStack(Material.STICK);
                     ItemMeta meta = item.getItemMeta();
-                    meta.setDisplayName(ChatColor.GOLD + "Ice Wand");
+                    meta.setDisplayName(ChatColor.GOLD + plugin.getConfig().getString("artifact-names.ice-wand"));
                     ArrayList<String> lore = new ArrayList<>();
                     lore.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "Look at an enemy and click! It's now frozen!");
                     meta.setLore(lore);
@@ -218,7 +218,7 @@ public class giveCommand implements CommandExecutor, TabCompleter {
                 } else if (args[1].equals("rapid_crossbow")) {
                     ItemStack item = new ItemStack(Material.CROSSBOW);
                     ItemMeta meta = item.getItemMeta();
-                    meta.setDisplayName(ChatColor.GOLD + "Rapid Crossbow");
+                    meta.setDisplayName(ChatColor.GOLD + plugin.getConfig().getString("artifact-names.rapid-crossbow"));
                     ArrayList<String> lore = new ArrayList<>();
                     lore.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "Shoot like crazy!");
                     lore.add(ChatColor.GOLD + "SPECIAL: " + ChatColor.GREEN + "Does more damage the more health you have!");
@@ -234,7 +234,7 @@ public class giveCommand implements CommandExecutor, TabCompleter {
             }
         } catch (Exception e) {
             Player player = (Player) sender;
-            player.sendMessage(ChatColor.RED + "Please include a subcommand such as " + ChatColor.GOLD + "\"give\"" + ChatColor.RED + " or " + ChatColor.GOLD + "\"gui\"");
+            this.plugin.typeGUI(player);
         }
         return true;
     }

@@ -32,7 +32,7 @@ import org.bukkit.ChatColor;
 /* 32 */       Random rand = new Random();
 /* 33 */       ItemStack item = new ItemStack(Material.STICK);
 /* 34 */       ItemMeta meta = item.getItemMeta();
-/* 35 */       meta.setDisplayName(ChatColor.GOLD + "Ice Wand");
+/* 35 */       meta.setDisplayName(ChatColor.GOLD + plugin.getConfig().getString("artifact-names.ice-wand"));
 /* 36 */       ArrayList<String> lore = new ArrayList<>();
 /* 37 */       lore.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "Look at a enemy and click! Its now frozen!");
 /* 38 */       meta.setLore(lore);
