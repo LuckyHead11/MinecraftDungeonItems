@@ -80,7 +80,9 @@ import org.bukkit.potion.PotionType;
      SpeedBoots boots = new SpeedBoots(this);
      robe.start();
      boots.start();
-     print("Done!");
+     print("Starting Metrics!...");
+     Metrics metrics = new Metrics(this, 19321);
+     print("Done everything has loading successfully!");
    }
 
 
