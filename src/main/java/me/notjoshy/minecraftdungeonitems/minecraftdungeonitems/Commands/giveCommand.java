@@ -38,7 +38,7 @@ public class giveCommand implements CommandExecutor, TabCompleter {
                     player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 1.0F);
                     player.getInventory().addItem(new ItemStack[]{item});
                 } else if (args[1].equals("FireBrand")) {
-                    ItemStack item = new ItemStack(Material.NETHERITE_AXE);
+                    ItemStack item = new ItemStack(Material.GOLDEN_AXE);
                     ItemMeta meta = item.getItemMeta();
                     meta.setDisplayName(ChatColor.GOLD + "FireBrand");
                     ArrayList<String> lore = new ArrayList<>();
@@ -53,7 +53,7 @@ public class giveCommand implements CommandExecutor, TabCompleter {
                     ItemMeta meta = item.getItemMeta();
                     meta.setDisplayName(ChatColor.GOLD + plugin.getConfig().getString("weapon-names.whirl-wind"));
                     ArrayList<String> lore = new ArrayList<>();
-                    lore.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "Super super super super POWERFUL weapon");
+                    lore.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "Blows entities away when hit.");
                     meta.setLore(lore);
                     item.setItemMeta(meta);
                     player.sendMessage("There you go!");
@@ -76,7 +76,7 @@ public class giveCommand implements CommandExecutor, TabCompleter {
                     ItemMeta meta = item.getItemMeta();
                     meta.setDisplayName(ChatColor.GOLD + plugin.getConfig().getString("artifact-names.light-feather"));
                     ArrayList<String> lore = new ArrayList<>();
-                    lore.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "Boosts you up!");
+                    lore.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "Boosts you in the direction you're looking.");
                     meta.setLore(lore);
                     item.setItemMeta(meta);
                     player.sendMessage("There you go!");
@@ -220,7 +220,7 @@ public class giveCommand implements CommandExecutor, TabCompleter {
                     ItemMeta meta = item.getItemMeta();
                     meta.setDisplayName(ChatColor.GOLD + plugin.getConfig().getString("artifact-names.rapid-crossbow"));
                     ArrayList<String> lore = new ArrayList<>();
-                    lore.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "Shoot like crazy!");
+                    lore.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "There is no delay, unlike a normal bow.");
                     lore.add(ChatColor.GOLD + "SPECIAL: " + ChatColor.GREEN + "Does more damage the more health you have!");
                     meta.setLore(lore);
                     item.setItemMeta(meta);

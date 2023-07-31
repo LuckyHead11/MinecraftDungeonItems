@@ -25,7 +25,7 @@
      }
    @EventHandler
    public void attack(EntityDamageByEntityEvent e) {
-     ItemStack item = new ItemStack(Material.NETHERITE_AXE);
+     ItemStack item = new ItemStack(Material.GOLDEN_AXE);
      ItemMeta meta = item.getItemMeta();
      meta.setDisplayName(ChatColor.GOLD + plugin.getConfig().getString("weapon-names.fire-brand"));
      ArrayList<String> lore = new ArrayList<>();
