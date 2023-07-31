@@ -30,7 +30,7 @@
      ItemMeta meta = item.getItemMeta();
      meta.setDisplayName(ChatColor.GOLD + plugin.getConfig().getString("artifact-names.light-feather"));
      ArrayList<String> lore = new ArrayList<>();
-     lore.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "Boosts you up!");
+     lore.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "Boosts you in the direction you're looking.");
      meta.setLore(lore);
      item.setItemMeta(meta);
      Player player = e.getPlayer();

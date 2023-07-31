@@ -37,7 +37,7 @@
        ItemMeta meta = item.getItemMeta();
        meta.setDisplayName(ChatColor.GOLD + plugin.getConfig().getString("bow-names.rapid-crossbow"));
        ArrayList<String> lore = new ArrayList<>();
-       lore.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "Shoot like crazy!");
+       lore.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "There is no delay, unlike a normal bow.");
        lore.add(ChatColor.GOLD + "SPECIAL: " + ChatColor.GREEN + "Does more damage the more health you have!");
        meta.setLore(lore);
        item.setItemMeta(meta);

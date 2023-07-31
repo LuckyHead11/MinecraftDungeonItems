@@ -32,7 +32,7 @@ import org.bukkit.ChatColor;
      ItemMeta meta = item.getItemMeta();
      meta.setDisplayName(ChatColor.GOLD + plugin.getConfig().getString("weapon-names.whirl-wind"));
      ArrayList<String> lore = new ArrayList<>();
-     lore.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "Super super super super POWERFUL weapon");
+     lore.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "Blows entities away when hit.");
      meta.setLore(lore);
      item.setItemMeta(meta);
      if (e.getDamager() instanceof Player) {
@@ -49,8 +49,8 @@ import org.bukkit.ChatColor;
              world.spawnParticle(Particle.CLOUD, loca, 10, 0.0D, 0.0D, 0.0D);
              int damage = rand.nextInt(7);
              for (; damage < 3; damage = rand.nextInt(7));
-             entity.damage(damage);
-           }
+             if (entity instanceof Player) {} else {entity.damage(damage);}
+             }
            Location playerLocation2 = player.getLocation();
            for (LivingEntity entity2 : playerLocation2.getNearbyLivingEntities(5.0D, 5.0D, 5.0D)) {
 
@@ -60,7 +60,7 @@ import org.bukkit.ChatColor;
                world.spawnParticle(Particle.CLOUD, loc, 10, 0.0D, 0.0D, 0.0D);
                int damage = rand.nextInt(7);
                for (; damage < 3; damage = rand.nextInt(7));
-               entity.damage(damage);
+               if (entity instanceof Player) {} else {entity.damage(damage);}
              }
            }
          }
