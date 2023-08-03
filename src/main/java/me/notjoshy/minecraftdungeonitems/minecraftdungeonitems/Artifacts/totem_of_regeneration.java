@@ -29,7 +29,7 @@ public class totem_of_regeneration implements Listener {
     }
   @EventHandler
   public void onInteract(PlayerInteractEvent e) {
-    if (e.getAction() == Action.RIGHT_CLICK_AIR) {
+    if (e.getAction() == Action.RIGHT_CLICK_BLOCK) {
       ItemStack item = new ItemStack(Material.APPLE);
       ItemMeta meta = item.getItemMeta();
       meta.setDisplayName(ChatColor.GOLD + plugin.getConfig().getString("artifact-names.totem-of-regeneration"));
@@ -38,7 +38,8 @@ public class totem_of_regeneration implements Listener {
       meta.setLore(lore);
       item.setItemMeta(meta);
       Player player = e.getPlayer();
-      if (Objects.equals(((ItemMeta)Objects.<ItemMeta>requireNonNull(player.getInventory().getItemInMainHand().getItemMeta())).getLore(), item.getItemMeta().getLore()) && e.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
+      if (Objects.equals(((ItemMeta)Objects.<ItemMeta>requireNonNull(player.getInventory().getItemInMainHand().getItemMeta())).getLore(), item.getItemMeta().getLore()) && e.getAction().equals(Action.RIGHT_CLICK_BLOCK)&& plugin.removeEnergy(e.getPlayer(), 0.35f)
+              && plugin.removeEnergy(e.getPlayer(), 0.2f)) {
         player.playSound(player.getLocation(), Sound.ENTITY_GENERIC_DRINK, 1.0F, 1.0F);
         spawnPad(e.getClickedBlock().getLocation().add(0.5D, 1.1D, 0.5D));
       }

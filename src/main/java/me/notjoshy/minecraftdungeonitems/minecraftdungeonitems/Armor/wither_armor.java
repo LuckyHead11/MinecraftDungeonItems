@@ -43,9 +43,9 @@
      meta.setLore(lore);
      item.setItemMeta(meta);
      Player player = e.getPlayer();
-     if ((e.getAction().equals(Action.RIGHT_CLICK_BLOCK) || e.getAction().equals(Action.RIGHT_CLICK_BLOCK)) &&
+     if ((e.getAction().equals(Action.RIGHT_CLICK_BLOCK) || e.getAction().equals(Action.RIGHT_CLICK_AIR)) &&
        player.getInventory().getChestplate() != null &&
-       Objects.equals(((ItemMeta)Objects.<ItemMeta>requireNonNull(((ItemStack)Objects.<ItemStack>requireNonNull(e.getPlayer().getInventory().getChestplate())).getItemMeta())).getLore(), item.getItemMeta().getLore())) {
+       Objects.equals(((ItemMeta)Objects.<ItemMeta>requireNonNull(((ItemStack)Objects.<ItemStack>requireNonNull(e.getPlayer().getInventory().getChestplate())).getItemMeta())).getLore(), item.getItemMeta().getLore()) && plugin.removeEnergy(e.getPlayer(), 0.4f)) {
        World world = player.getWorld();
        Location loc = player.getLocation();
        loc.setY(loc.getY() + 2.0D);

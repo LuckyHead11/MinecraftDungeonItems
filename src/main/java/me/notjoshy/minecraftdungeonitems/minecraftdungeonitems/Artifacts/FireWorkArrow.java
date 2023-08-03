@@ -35,7 +35,8 @@
      meta.setLore(lore);
      item.setItemMeta(meta);
      if (e.getAction().equals(Action.RIGHT_CLICK_AIR) &&
-       Objects.equals(((ItemMeta)Objects.<ItemMeta>requireNonNull(((ItemStack)Objects.<ItemStack>requireNonNull(e.getItem())).getItemMeta())).getLore(), item.getItemMeta().getLore())) {
+       Objects.equals(((ItemMeta)Objects.<ItemMeta>requireNonNull(((ItemStack)Objects.<ItemStack>requireNonNull(e.getItem())).getItemMeta())).getLore(), item.getItemMeta().getLore())
+     && plugin.removeEnergy(e.getPlayer(), 0.1f)) {
        Player player = e.getPlayer();
        Firework firework = (Firework)player.getWorld().spawnEntity(player.getLocation(), EntityType.FIREWORK);
        FireworkMeta fireworkMeta = firework.getFireworkMeta();

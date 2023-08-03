@@ -9,7 +9,8 @@ import org.bukkit.ChatColor;
 /*    */ import org.bukkit.Particle;
 /*    */ import org.bukkit.Sound;
 /*    */ import org.bukkit.World;
-/*    */ import org.bukkit.entity.Entity;
+/*    */ import org.bukkit.boss.BossBar;
+import org.bukkit.entity.Entity;
 /*    */ import org.bukkit.entity.LivingEntity;
 /*    */ import org.bukkit.entity.Player;
 /*    */ import org.bukkit.event.EventHandler;
@@ -37,9 +38,9 @@ import org.bukkit.ChatColor;
 /* 37 */     meta.setLore(lore);
 /* 38 */     item.setItemMeta(meta);
 /* 39 */     Player player = e.getPlayer();
-/*    */     
+/*    */
 /* 41 */     if (e.getAction().equals(Action.RIGHT_CLICK_AIR) && 
-/* 42 */       Objects.equals(((ItemMeta)Objects.<ItemMeta>requireNonNull(player.getInventory().getItemInMainHand().getItemMeta())).getLore(), item.getItemMeta().getLore())) {
+/* 42 */       Objects.equals(((ItemMeta)Objects.<ItemMeta>requireNonNull(player.getInventory().getItemInMainHand().getItemMeta())).getLore(), item.getItemMeta().getLore())&& plugin.removeEnergy(e.getPlayer(), 0.1f)) {
 /* 43 */       World world = player.getWorld();
 /* 44 */       int random = rand.nextInt(3);
 /* 45 */       if (random == 0) {

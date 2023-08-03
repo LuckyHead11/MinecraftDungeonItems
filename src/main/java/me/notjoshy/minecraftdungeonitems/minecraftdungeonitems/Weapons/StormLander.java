@@ -37,7 +37,8 @@
      if (e.getDamager() instanceof Player) {
        Player player = (Player)e.getDamager();
        if (player.getInventory().getItemInMainHand().lore() != null &&
-         Objects.equals(((ItemMeta)Objects.<ItemMeta>requireNonNull(player.getInventory().getItemInMainHand().getItemMeta())).lore(), item.getItemMeta().lore())) {
+         Objects.equals(((ItemMeta)Objects.<ItemMeta>requireNonNull(player.getInventory().getItemInMainHand().getItemMeta())).lore(), item.getItemMeta().lore())
+               && plugin.removeEnergy(player, 0.25f)) {
          Entity entity = e.getEntity();
          World world = player.getWorld();
          Location loc = entity.getLocation();

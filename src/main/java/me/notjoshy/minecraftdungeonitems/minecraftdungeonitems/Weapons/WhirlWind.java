@@ -38,7 +38,8 @@ import org.bukkit.ChatColor;
      if (e.getDamager() instanceof Player) {
        Player player = (Player)e.getDamager();
        if (player.getInventory().getItemInMainHand().lore() != null &&
-         Objects.equals(((ItemMeta)Objects.<ItemMeta>requireNonNull(player.getInventory().getItemInMainHand().getItemMeta())).lore(), item.getItemMeta().lore())) {
+         Objects.equals(((ItemMeta)Objects.<ItemMeta>requireNonNull(player.getInventory().getItemInMainHand().getItemMeta())).lore(), item.getItemMeta().lore())
+               && plugin.removeEnergy(player, 0.1f)) {
          World world = player.getWorld();
          Entity mainEntity = e.getEntity();
          Location playerLocation = player.getLocation();

@@ -1,5 +1,7 @@
 /*     */ package me.notjoshy.minecraftdungeonitems.minecraftdungeonitems;
 /*     */ import java.util.ArrayList;
+import java.util.List;
+
 import me.notjoshy.minecraftdungeonitems.minecraftdungeonitems.Armor.ember_robe;
 import me.notjoshy.minecraftdungeonitems.minecraftdungeonitems.Armor.wither_armor;
 import me.notjoshy.minecraftdungeonitems.minecraftdungeonitems.Artifacts.*;
@@ -15,16 +17,26 @@ import me.notjoshy.minecraftdungeonitems.minecraftdungeonitems.Weapons.FireBrand
 import me.notjoshy.minecraftdungeonitems.minecraftdungeonitems.Weapons.StormLander;
 import me.notjoshy.minecraftdungeonitems.minecraftdungeonitems.Weapons.WhirlWind;
 import me.notjoshy.minecraftdungeonitems.minecraftdungeonitems.Weapons.nameless_blade;
+import me.notjoshy.minecraftdungeonitems.minecraftdungeonitems.energy.EnergyHandler;
+import me.notjoshy.minecraftdungeonitems.minecraftdungeonitems.energy.EnergyListener;
 import me.notjoshy.minecraftdungeonitems.minecraftdungeonitems.gui.MenuHandler;
 import me.notjoshy.minecraftdungeonitems.minecraftdungeonitems.utils.FoodDrop;
 import me.notjoshy.minecraftdungeonitems.minecraftdungeonitems.utils.PotionDrop;
+import net.kyori.adventure.platform.bukkit.BukkitAudiences;
 import org.bukkit.Bukkit;
 /*     */ import org.bukkit.ChatColor;
-/*     */ import org.bukkit.Material;
-/*     */ import org.bukkit.command.CommandExecutor;
+/*     */ import org.bukkit.GameMode;
+import org.bukkit.Material;
+/*     */ import org.bukkit.boss.BarColor;
+import org.bukkit.boss.BarFlag;
+import org.bukkit.boss.BarStyle;
+import org.bukkit.boss.BossBar;
+import org.bukkit.command.CommandExecutor;
 /*     */ import org.bukkit.entity.Player;
-/*     */ import org.bukkit.event.Listener;
-/*     */ import org.bukkit.inventory.Inventory;
+/*     */ import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+/*     */ import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.inventory.Inventory;
 /*     */ import org.bukkit.inventory.InventoryHolder;
 /*     */ import org.bukkit.inventory.ItemFlag;
 /*     */ import org.bukkit.inventory.ItemStack;
@@ -33,10 +45,16 @@ import org.bukkit.Bukkit;
 /*     */ import org.bukkit.plugin.java.JavaPlugin;
 /*     */ import org.bukkit.potion.Potion;
 import org.bukkit.potion.PotionType;
+import org.checkerframework.checker.nullness.qual.NonNull;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 /*     */
 /*     */ public final class MinecraftDungeonItems extends JavaPlugin {
+  public EnergyHandler energy;
+  private BukkitAudiences adventure;
    public void onEnable() {
+
      print("CONFIG.YML: ");
      print("     Creating config.yml");
      getConfig().options().copyDefaults();
@@ -52,8 +70,8 @@ import org.bukkit.potion.PotionType;
 
 
 
-
      print("Initializing Events");
+
      getServer().getPluginManager().registerEvents((Listener)new MenuHandler(this), (Plugin)this);
      getServer().getPluginManager().registerEvents((Listener)new StormLander(this), (Plugin)this);
      getServer().getPluginManager().registerEvents((Listener)new FireBrand(this), (Plugin)this);
@@ -71,21 +89,63 @@ import org.bukkit.potion.PotionType;
      getServer().getPluginManager().registerEvents((Listener)new nameless_blade(this), (Plugin)this);
      getServer().getPluginManager().registerEvents((Listener)new ice_wand(this), (Plugin)this);
      getServer().getPluginManager().registerEvents((Listener)new rapid_crossbow(this), (Plugin)this);
-
+     getServer().getPluginManager().registerEvents((Listener)new SpeedBoots(this), this);
      getServer().getPluginManager().registerEvents((Listener)new FoodDrop(this), (Plugin)this);
      getServer().getPluginManager().registerEvents((Listener)new PotionDrop(this), (Plugin)this);
      print("Done!");
      print("Starting Runnables!");
      ember_robe robe = new ember_robe(this);
      SpeedBoots boots = new SpeedBoots(this);
+     energy = new EnergyHandler(this);
      robe.start();
      boots.start();
+     energy.start();
      print("Starting Metrics!...");
      Metrics metrics = new Metrics(this, 19321);
      print("Done everything has loading successfully!");
+     getServer().getPluginManager().registerEvents((Listener)new EnergyListener(this), (Plugin)this);
+
+
+
+
+
+
    }
 
 
+  @Override
+  public void onDisable() {
+     if(this.adventure != null) {
+       this.adventure.close();
+       this.adventure = null;
+     }
+   }
+
+  public boolean removeEnergy(Player player, float amount) {
+     if (player.getGameMode() != GameMode.CREATIVE) {
+       BossBar bossbar = energy.getBossbar(player);
+       float progress = (float) bossbar.getProgress();
+       if (progress <= 0.15) {
+         bossbar.setColor(BarColor.RED);
+         bossbar.setTitle(ChatColor.RED + "Energy - Low");
+       }
+       if ((progress - amount) <= 0) {
+
+
+         return false;
+       } else {
+         bossbar.setColor(BarColor.GREEN);
+         bossbar.setProgress(progress - (amount));
+         return true;
+       }
+
+     }
+     return true;
+
+
+
+
+  }
 
 
 
@@ -287,7 +347,7 @@ import org.bukkit.potion.PotionType;
          ItemStack fancy = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
          ItemMeta fancy_meta = fancy.getItemMeta();
          assert fancy_meta != null;
-         fancy_meta.removeItemFlags(new ItemFlag[] { ItemFlag.HIDE_ATTRIBUTES });
+         fancy_meta.removeItemFlags(ItemFlag.HIDE_ATTRIBUTES);
          fancy_meta.setDisplayName("");
          fancy.setItemMeta(fancy_meta);
          menu.setItem(i, fancy);
@@ -392,16 +452,16 @@ import org.bukkit.potion.PotionType;
 
      ItemStack item1 = new ItemStack(Material.GOLDEN_AXE);
      ItemMeta meta1 = item1.getItemMeta();
-     meta1.setDisplayName(ChatColor.GOLD + "FireBrand");
+     meta1.setDisplayName(ChatColor.GOLD + getConfig().getString("weapon-names.fire-brand"));
      ArrayList<String> lore1 = new ArrayList<>();
-     lore1.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "Blows entities away when hit.");
+     lore1.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "Makes entities catch on fire");
      meta1.setLore(lore1);
      item1.setItemMeta(meta1);
      menu.addItem(new ItemStack[] { item1 });
 
      ItemStack item2 = new ItemStack(Material.NETHERITE_AXE);
      ItemMeta meta2 = item2.getItemMeta();
-     meta2.setDisplayName(ChatColor.GOLD + "StormLander");
+     meta2.setDisplayName(ChatColor.GOLD + getConfig().getString("weapon-names.storm-lander"));
      ArrayList<String> lore2 = new ArrayList<>();
      lore2.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "Spawns lightning on entity attack");
      meta2.setLore(lore2);
@@ -410,7 +470,7 @@ import org.bukkit.potion.PotionType;
 
      ItemStack item3 = new ItemStack(Material.NETHERITE_AXE);
      ItemMeta meta3 = item3.getItemMeta();
-     meta3.setDisplayName(ChatColor.GOLD + "WhirlWind");
+     meta3.setDisplayName(ChatColor.GOLD + getConfig().getString("weapon-names.whirl-wind"));
      ArrayList<String> lore3 = new ArrayList<>();
      lore3.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "Blows entities away when hit.");
      meta3.setLore(lore3);
@@ -419,9 +479,9 @@ import org.bukkit.potion.PotionType;
 
      ItemStack item4 = new ItemStack(Material.NETHERITE_SWORD);
      ItemMeta meta4 = item4.getItemMeta();
-     meta4.setDisplayName(ChatColor.GOLD + "Nameless Blade");
+     meta4.setDisplayName(ChatColor.GOLD + getConfig().getString("weapon-names.nameless-blade"));
      ArrayList<String> lore4 = new ArrayList<>();
-     lore4.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "On attack, it weakens enemy's!");
+     lore4.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "On attack, it weakens enemies.");
      meta4.setLore(lore4);
      item4.setItemMeta(meta4);
      menu.addItem(new ItemStack[] { item4 });
@@ -640,7 +700,7 @@ import org.bukkit.potion.PotionType;
      ItemMeta meta4 = item4.getItemMeta();
      meta4.setDisplayName(ChatColor.GOLD + getConfig().getString("artifact-names.wind-horn"));
      ArrayList<String> lore4 = new ArrayList<>();
-     lore4.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "Blows entitys away!");
+     lore4.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "Blows entities away!");
      meta4.setLore(lore4);
      item4.setItemMeta(meta4);
      menu.addItem(new ItemStack[] { item4 });

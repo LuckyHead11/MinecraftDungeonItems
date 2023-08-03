@@ -39,7 +39,7 @@
        item.setItemMeta(meta);
 
        if (e.getAction().equals(Action.RIGHT_CLICK_AIR) &&
-         Objects.equals(((ItemMeta)Objects.<ItemMeta>requireNonNull(player.getInventory().getItemInMainHand().getItemMeta())).getLore(), item.getItemMeta().getLore())) {
+         Objects.equals(((ItemMeta)Objects.<ItemMeta>requireNonNull(player.getInventory().getItemInMainHand().getItemMeta())).getLore(), item.getItemMeta().getLore())&& plugin.removeEnergy(e.getPlayer(), 0.1f)) {
          Location loc = player.getLocation();
          World world = player.getWorld();
          player.playSound(player.getLocation(), Sound.BLOCK_BELL_USE, 1.0F, 1.0F);

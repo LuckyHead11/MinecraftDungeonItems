@@ -35,7 +35,7 @@
      item.setItemMeta(meta);
      Player player = e.getPlayer();
      if (e.getAction().equals(Action.RIGHT_CLICK_AIR) &&
-       Objects.equals(((ItemMeta)Objects.<ItemMeta>requireNonNull(player.getInventory().getItemInMainHand().getItemMeta())).getLore(), item.getItemMeta().getLore())) {
+       Objects.equals(((ItemMeta)Objects.<ItemMeta>requireNonNull(player.getInventory().getItemInMainHand().getItemMeta())).getLore(), item.getItemMeta().getLore())&& plugin.removeEnergy(e.getPlayer(), 0.03f)) {
        World world = player.getWorld();
        Location new_loc = player.getLocation();
        new_loc.setY(new_loc.getY()-1);

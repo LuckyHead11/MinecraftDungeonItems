@@ -32,21 +32,24 @@
        ItemMeta meta = item.getItemMeta();
        meta.setDisplayName(ChatColor.GOLD + plugin.getConfig().getString("artifact-names.wind-horn"));
        ArrayList<String> lore = new ArrayList<>();
-       lore.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "Blows entitys away!");
+       lore.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "Blows entities away!");
        meta.setLore(lore);
        item.setItemMeta(meta);
        Player player = e.getPlayer();
        if (Objects.equals(((ItemMeta)Objects.<ItemMeta>requireNonNull(player.getInventory().getItemInMainHand().getItemMeta())).getLore(), item.getItemMeta().getLore())) {
-         World world = player.getWorld();
-         Location loc = player.getLocation();
+           if (this.plugin.removeEnergy(player, 0.1f)) {
+               World world = player.getWorld();
+               Location loc = player.getLocation();
 
-         player.playSound(loc, Sound.ITEM_TRIDENT_RIPTIDE_3, 1.0F, 2.0F);
-         for (Entity entity : player.getNearbyEntities(10.0D, 10.0D, 10.0D)) {
-           entity.setVelocity(player.getLocation().getDirection().multiply(2).setY(1));
-         }
+               player.playSound(loc, Sound.ITEM_TRIDENT_RIPTIDE_3, 1.0F, 2.0F);
+               for (Entity entity : player.getNearbyEntities(10.0D, 10.0D, 10.0D)) {
+                   entity.setVelocity(player.getLocation().getDirection().multiply(2).setY(1));
+               }
 
 
-         world.spawnParticle(Particle.CLOUD, loc, 100, 0.0D, 0.0D, 0.0D);
+               world.spawnParticle(Particle.CLOUD, loc, 100, 0.0D, 0.0D, 0.0D);
+           }
+
        }
      }
    }
