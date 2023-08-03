@@ -45,7 +45,7 @@ import org.bukkit.scheduler.BukkitTask;
 /* 41 */     item.setItemMeta(meta);
 /* 42 */     Player player = e.getPlayer();
 /* 43 */     if (e.getAction().equals(Action.RIGHT_CLICK_AIR) &&
-/* 44 */       Objects.equals(((ItemMeta)Objects.<ItemMeta>requireNonNull(player.getInventory().getItemInMainHand().getItemMeta())).getLore(), item.getItemMeta().getLore())) {
+/* 44 */       Objects.equals(((ItemMeta)Objects.<ItemMeta>requireNonNull(player.getInventory().getItemInMainHand().getItemMeta())).getLore(), item.getItemMeta().getLore())&& plugin.removeEnergy(e.getPlayer(), 0.5f)) {
 /* 45 */       Location loc = player.getLocation();
 /* 46 */       final World world = player.getWorld();
 /* 47 */       final IronGolem golem = (IronGolem)world.spawnEntity(loc, EntityType.IRON_GOLEM);

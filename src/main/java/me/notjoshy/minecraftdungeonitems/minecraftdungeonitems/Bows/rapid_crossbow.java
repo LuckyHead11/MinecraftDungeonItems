@@ -44,7 +44,8 @@
        Player player = e.getPlayer();
 
        if (player.getInventory().getItemInMainHand().getLore() != null &&
-         Objects.equals(((ItemMeta)Objects.<ItemMeta>requireNonNull(player.getInventory().getItemInMainHand().getItemMeta())).getLore(), item.getItemMeta().getLore())) {
+         Objects.equals(((ItemMeta)Objects.<ItemMeta>requireNonNull(player.getInventory().getItemInMainHand().getItemMeta())).getLore(), item.getItemMeta().getLore())
+       && plugin.removeEnergy(player, 0.075F)) {
 
          if (e.getPlayer().getGameMode().equals(GameMode.CREATIVE)) {
            Location eye = player.getEyeLocation();

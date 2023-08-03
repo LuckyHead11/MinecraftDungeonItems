@@ -30,3 +30,5 @@ weapon-names:
   nameless-blade: "Nameless Blade"
   storm-lander: "Storm Lander"
   whirl-wind: "Whirl Wind"
+energy:
+  increments: 0.025 #It'ts on a scale from 0.00 and 1.00 so just. Just imagine a 100% scale, just divide that by 100

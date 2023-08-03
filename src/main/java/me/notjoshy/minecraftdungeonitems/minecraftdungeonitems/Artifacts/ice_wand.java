@@ -38,7 +38,7 @@ import org.bukkit.ChatColor;
 /* 38 */       meta.setLore(lore);
 /* 39 */       item.setItemMeta(meta);
 /* 40 */       Player player = e.getPlayer();
-/* 41 */       if (Objects.equals(((ItemMeta)Objects.<ItemMeta>requireNonNull(player.getInventory().getItemInMainHand().getItemMeta())).getLore(), item.getItemMeta().getLore())) {
+/* 41 */       if (Objects.equals(((ItemMeta)Objects.<ItemMeta>requireNonNull(player.getInventory().getItemInMainHand().getItemMeta())).getLore(), item.getItemMeta().getLore())&& plugin.removeEnergy(e.getPlayer(), 0.1f)) {
 /* 42 */         final LivingEntity entity = (LivingEntity)e.getPlayer().getTargetEntity(100);
 /* 43 */         if (entity != null) {
 /* 44 */           entity.damage(entity.getHealth() / 2.0D);

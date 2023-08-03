@@ -39,7 +39,7 @@
        item.setItemMeta(meta);
        try {
            if (e.getAction().equals(Action.RIGHT_CLICK_AIR) &&
-                   Objects.equals(((ItemMeta)Objects.<ItemMeta>requireNonNull(player.getInventory().getItemInMainHand().getItemMeta())).getLore(), item.getItemMeta().getLore())) {
+                   Objects.equals(((ItemMeta)Objects.<ItemMeta>requireNonNull(player.getInventory().getItemInMainHand().getItemMeta())).getLore(), item.getItemMeta().getLore())&& plugin.removeEnergy(e.getPlayer(), 0.1f)) {
                Location loc = player.getLocation();
                World world = player.getWorld();
                Block block = player.getTargetBlockExact(50);

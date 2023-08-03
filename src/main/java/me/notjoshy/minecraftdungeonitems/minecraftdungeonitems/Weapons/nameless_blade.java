@@ -41,12 +41,10 @@
      if (e.getDamager() instanceof Player) {
        Player player = (Player)e.getDamager();
        if (player.getInventory().getItemInMainHand().lore() != null &&
-         Objects.equals(((ItemMeta)Objects.<ItemMeta>requireNonNull(player.getInventory().getItemInMainHand().getItemMeta())).lore(), item.getItemMeta().lore())) {
-         World world = player.getWorld();
-         Entity mainEntity = e.getEntity();
-         Location playerLocation = player.getLocation();
+         Objects.equals(((ItemMeta)Objects.<ItemMeta>requireNonNull(player.getInventory().getItemInMainHand().getItemMeta())).lore(), item.getItemMeta().lore())
+               && plugin.removeEnergy(player, 0.1f)) {
          LivingEntity entity = (LivingEntity)e.getEntity();
-         entity.addPotionEffect(new PotionEffect(PotionEffectType.WEAKNESS, 200, 7, true, true, true));
+         entity.addPotionEffect(new PotionEffect(PotionEffectType.WEAKNESS, 100, 2, false, false, false));
        }
      }
    }

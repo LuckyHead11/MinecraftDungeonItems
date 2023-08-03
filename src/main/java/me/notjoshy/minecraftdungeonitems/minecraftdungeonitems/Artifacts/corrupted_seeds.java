@@ -4,13 +4,10 @@
  import java.util.Objects;
 
  import me.notjoshy.minecraftdungeonitems.minecraftdungeonitems.MinecraftDungeonItems;
- import org.bukkit.ChatColor;
- import org.bukkit.Color;
- import org.bukkit.Location;
- import org.bukkit.Material;
- import org.bukkit.Particle;
- import org.bukkit.Sound;
+ import org.bukkit.*;
  import org.bukkit.block.Block;
+ import org.bukkit.boss.BarColor;
+ import org.bukkit.boss.BossBar;
  import org.bukkit.entity.AreaEffectCloud;
  import org.bukkit.entity.EntityType;
  import org.bukkit.entity.Player;
@@ -22,8 +19,9 @@
  import org.bukkit.inventory.meta.ItemMeta;
  import org.bukkit.potion.PotionEffect;
  import org.bukkit.potion.PotionEffectType;
+ import org.bukkit.scheduler.BukkitRunnable;
 
- public class corrupted_seeds
+public class corrupted_seeds
    implements Listener
  {
 
@@ -34,7 +32,7 @@
      }
    @EventHandler
    public void onInteract(PlayerInteractEvent e) {
-     if (e.getAction() == Action.RIGHT_CLICK_AIR) {
+     if (e.getAction() == Action.RIGHT_CLICK_BLOCK) {
        ItemStack item = new ItemStack(Material.POTION);
        ItemMeta meta = item.getItemMeta();
        meta.setDisplayName(ChatColor.GOLD + plugin.getConfig().getString("artifact-names.corrupted-seeds"));
@@ -44,11 +42,28 @@
        meta.setLore(lore);
        item.setItemMeta(meta);
        Player player = e.getPlayer();
-       if (Objects.equals(((ItemMeta)Objects.<ItemMeta>requireNonNull(player.getInventory().getItemInMainHand().getItemMeta())).getLore(), item.getItemMeta().getLore()))
+       if (Objects.equals(((ItemMeta)Objects.<ItemMeta>requireNonNull(player.getInventory().getItemInMainHand().getItemMeta())).getLore(), item.getItemMeta().getLore())
+              )
        {
-         if (e.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
-           player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_BURP, 1.0F, 1.0F);
-           spawnPad(((Block)Objects.<Block>requireNonNull(e.getClickedBlock())).getLocation().add(0.5D, 1.1D, 0.5D));
+         if (e.getAction().equals(Action.RIGHT_CLICK_BLOCK) && plugin.removeEnergy(e.getPlayer(), 0.25f)) {
+             player.sendMessage(ChatColor.DARK_GRAY + "[Minecraft Dungeons] - " + ChatColor.GREEN + "You have 5 seconds to move, before the poison cloud spawns where you were standing!");
+
+
+
+             (new BukkitRunnable()
+             {
+
+
+                 public void run()
+                 {
+                     player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_BURP, 1.0F, 1.0F);
+                     spawnPad(((Block)Objects.<Block>requireNonNull(e.getClickedBlock())).getLocation().add(0.5D, 1.1D, 0.5D));
+                 }
+             }).runTaskLater(this.plugin, 100L);
+
+
+
+
          }
        }
      }

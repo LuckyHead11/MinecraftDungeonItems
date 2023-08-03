@@ -134,7 +134,7 @@ import org.bukkit.ChatColor;
 /*     */             break;
 /*     */           case COMPASS:
 /* 136 */             this.plugin.reloadConfig();
-/* 137 */             player.sendMessage(ChatColor.DARK_GRAY + "Minecraft Dungeons - " + ChatColor.GREEN + "Done reloading!");
+/* 137 */             player.sendMessage(ChatColor.DARK_GRAY + "[Minecraft Dungeons] - " + ChatColor.GREEN + "Done reloading!");
 /* 138 */             this.plugin.settings(player);
 /*     */             break;
 /*     */           case BREAD:
