@@ -36,17 +36,21 @@ import org.bukkit.inventory.ItemStack;
              lore.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "Where these to gain speed!");
              meta.setLore(lore);
              item.setItemMeta(meta);
+             try {
+                 if (player.getInventory().getBoots() != null)
+                 {
+                     if (Objects.equals(((ItemMeta)Objects.<ItemMeta>requireNonNull(player.getInventory().getBoots().getItemMeta())).getLore(), item.getItemMeta().getLore())) {
+                         World world = player.getWorld();
+                         Location loc = player.getLocation();
 
-             if (player.getInventory().getBoots() != null)
-             {
-               if (Objects.equals(((ItemMeta)Objects.<ItemMeta>requireNonNull(player.getInventory().getBoots().getItemMeta())).getLore(), item.getItemMeta().getLore())) {
-                 World world = player.getWorld();
-                 Location loc = player.getLocation();
 
+                         player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 1, 4, true, false, false));
+                     }
+                 }
+             } catch(Exception e) {
 
-                 player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 1, 4, true, false, false));
-               }
              }
+
            }
          }
        }).runTaskTimer((Plugin)this.plugin, 1L, 1L);

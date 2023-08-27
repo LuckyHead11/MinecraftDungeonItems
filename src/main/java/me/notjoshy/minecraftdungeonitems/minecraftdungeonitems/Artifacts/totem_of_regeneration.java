@@ -38,11 +38,16 @@ public class totem_of_regeneration implements Listener {
       meta.setLore(lore);
       item.setItemMeta(meta);
       Player player = e.getPlayer();
-      if (Objects.equals(((ItemMeta)Objects.<ItemMeta>requireNonNull(player.getInventory().getItemInMainHand().getItemMeta())).getLore(), item.getItemMeta().getLore()) && e.getAction().equals(Action.RIGHT_CLICK_BLOCK)&& plugin.removeEnergy(e.getPlayer(), 0.35f)
-              && plugin.removeEnergy(e.getPlayer(), 0.2f)) {
-        player.playSound(player.getLocation(), Sound.ENTITY_GENERIC_DRINK, 1.0F, 1.0F);
-        spawnPad(e.getClickedBlock().getLocation().add(0.5D, 1.1D, 0.5D));
+      try {
+        if (Objects.equals(((ItemMeta)Objects.<ItemMeta>requireNonNull(player.getInventory().getItemInMainHand().getItemMeta())).getLore(), item.getItemMeta().getLore()) && e.getAction().equals(Action.RIGHT_CLICK_BLOCK)&& plugin.removeEnergy(e.getPlayer(), 0.35f)
+                && plugin.removeEnergy(e.getPlayer(), 0.2f)) {
+          player.playSound(player.getLocation(), Sound.ENTITY_GENERIC_DRINK, 1.0F, 1.0F);
+          spawnPad(e.getClickedBlock().getLocation().add(0.5D, 1.1D, 0.5D));
+        }
+      } catch(Exception es) {
+
       }
+
     }
   }
 
