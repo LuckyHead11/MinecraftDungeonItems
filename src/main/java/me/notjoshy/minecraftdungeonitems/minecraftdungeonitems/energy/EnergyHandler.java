@@ -59,13 +59,14 @@ public class EnergyHandler {
                     try {
                         if(bossbar.getProgress() > 0.15) {
                             bossbar.setColor(BarColor.GREEN);
-                            bossbar.setTitle(ChatColor.GREEN + "Energy");
+                            bossbar.setTitle(ChatColor.GREEN + "Energy - " + Math.round(bossbar.getProgress() * 100) + "%");
                         }
                         if(bossbar.getProgress() >= 1f) {
                             bossbar.setProgress(1F);
 
                         } else {
                             bossbar.setProgress(bossbar.getProgress() + plugin.getConfig().getDouble("energy.increments"));
+
                         }
                     } catch (Exception e) {
 

@@ -52,7 +52,6 @@
        WitherSkull skull = (WitherSkull)world.spawnEntity(loc, EntityType.WITHER_SKULL);
        skull.setCharged(true);
        skull.setVelocity(player.getLocation().getDirection().multiply(3));
-       skull.setBounce(true);
      }
    }
  }
