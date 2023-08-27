@@ -23,6 +23,7 @@ import me.notjoshy.minecraftdungeonitems.minecraftdungeonitems.gui.MenuHandler;
 import me.notjoshy.minecraftdungeonitems.minecraftdungeonitems.utils.FoodDrop;
 import me.notjoshy.minecraftdungeonitems.minecraftdungeonitems.utils.PotionDrop;
 import net.kyori.adventure.platform.bukkit.BukkitAudiences;
+import net.kyori.adventure.title.Title;
 import org.bukkit.*;
 /*     */
 /*     */
@@ -43,6 +44,8 @@ import org.bukkit.inventory.Inventory;
 /*     */ import org.bukkit.plugin.Plugin;
 /*     */ import org.bukkit.plugin.java.JavaPlugin;
 /*     */ import org.bukkit.potion.Potion;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 import org.bukkit.potion.PotionType;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.checkerframework.checker.nullness.qual.NonNull;
@@ -157,6 +160,10 @@ import org.jetbrains.annotations.Nullable;
        if (progress <= 0.15) {
          bossbar.setColor(BarColor.RED);
          bossbar.setTitle(ChatColor.RED + "Energy - Low");
+         player.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, (20) * 15 , 1));
+
+
+
        }
        if ((progress - amount) <= 0) {
 
@@ -165,6 +172,10 @@ import org.jetbrains.annotations.Nullable;
        } else {
          bossbar.setColor(BarColor.GREEN);
          bossbar.setProgress(progress - (amount));
+         if(progress > 0.15) {
+           bossbar.setTitle(ChatColor.GREEN + "Energy - " + Math.round(bossbar.getProgress() * 100) + "%");
+         }
+
          return true;
        }
 
