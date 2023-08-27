@@ -42,30 +42,35 @@ public class corrupted_seeds
        meta.setLore(lore);
        item.setItemMeta(meta);
        Player player = e.getPlayer();
-       if (Objects.equals(((ItemMeta)Objects.<ItemMeta>requireNonNull(player.getInventory().getItemInMainHand().getItemMeta())).getLore(), item.getItemMeta().getLore())
-              )
-       {
-         if (e.getAction().equals(Action.RIGHT_CLICK_BLOCK) && plugin.removeEnergy(e.getPlayer(), 0.25f)) {
-             player.sendMessage(ChatColor.DARK_GRAY + "[Minecraft Dungeons] - " + ChatColor.GREEN + "You have 5 seconds to move, before the poison cloud spawns where you were standing!");
+       try {
+           if (Objects.equals(((ItemMeta)Objects.<ItemMeta>requireNonNull(player.getInventory().getItemInMainHand().getItemMeta())).getLore(), item.getItemMeta().getLore())
+           )
+           {
+               if (e.getAction().equals(Action.RIGHT_CLICK_BLOCK) && plugin.removeEnergy(e.getPlayer(), 0.25f)) {
+                   player.sendMessage(ChatColor.DARK_GRAY + "[Minecraft Dungeons] - " + ChatColor.GREEN + "You have 5 seconds to move, before the poison cloud spawns where you were standing!");
 
 
 
-             (new BukkitRunnable()
-             {
+                   (new BukkitRunnable()
+                   {
 
 
-                 public void run()
-                 {
-                     player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_BURP, 1.0F, 1.0F);
-                     spawnPad(((Block)Objects.<Block>requireNonNull(e.getClickedBlock())).getLocation().add(0.5D, 1.1D, 0.5D));
-                 }
-             }).runTaskLater(this.plugin, 100L);
+                       public void run()
+                       {
+                           player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_BURP, 1.0F, 1.0F);
+                           spawnPad(((Block)Objects.<Block>requireNonNull(e.getClickedBlock())).getLocation().add(0.5D, 1.1D, 0.5D));
+                       }
+                   }).runTaskLater(this.plugin, 100L);
 
 
 
 
-         }
+               }
+           }
+       } catch(Exception es) {
+
        }
+
      }
    }
 

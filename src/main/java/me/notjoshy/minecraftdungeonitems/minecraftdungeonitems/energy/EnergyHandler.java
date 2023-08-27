@@ -51,6 +51,7 @@ public class EnergyHandler {
 
 
             public void run()
+
             {
 
                 for(int i = 0; i < bossbars.size(); i++) {

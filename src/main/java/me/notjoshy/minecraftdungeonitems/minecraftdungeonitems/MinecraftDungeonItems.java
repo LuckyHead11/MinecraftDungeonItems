@@ -23,10 +23,9 @@ import me.notjoshy.minecraftdungeonitems.minecraftdungeonitems.gui.MenuHandler;
 import me.notjoshy.minecraftdungeonitems.minecraftdungeonitems.utils.FoodDrop;
 import me.notjoshy.minecraftdungeonitems.minecraftdungeonitems.utils.PotionDrop;
 import net.kyori.adventure.platform.bukkit.BukkitAudiences;
-import org.bukkit.Bukkit;
-/*     */ import org.bukkit.ChatColor;
-/*     */ import org.bukkit.GameMode;
-import org.bukkit.Material;
+import org.bukkit.*;
+/*     */
+/*     */
 /*     */ import org.bukkit.boss.BarColor;
 import org.bukkit.boss.BarFlag;
 import org.bukkit.boss.BarStyle;
@@ -45,6 +44,7 @@ import org.bukkit.inventory.Inventory;
 /*     */ import org.bukkit.plugin.java.JavaPlugin;
 /*     */ import org.bukkit.potion.Potion;
 import org.bukkit.potion.PotionType;
+import org.bukkit.scheduler.BukkitRunnable;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -102,6 +102,7 @@ import org.jetbrains.annotations.Nullable;
      energy.start();
      print("Starting Metrics!...");
      Metrics metrics = new Metrics(this, 19321);
+     displayWelcomeMessage();
      print("Done everything has loading successfully!");
      getServer().getPluginManager().registerEvents((Listener)new EnergyListener(this), (Plugin)this);
 
@@ -110,6 +111,34 @@ import org.jetbrains.annotations.Nullable;
 
 
 
+
+
+   }
+
+   public void displayWelcomeMessage() {
+     MinecraftDungeonItems mcd = this;
+     (new BukkitRunnable()
+     {
+
+
+       public void run()
+       {
+         if(mcd.getConfig().getBoolean("first-time")) {
+           Player[] players = Bukkit.getOnlinePlayers().toArray(new Player[0]);
+           for(int i = 0; i < players.length; i++) {
+             Player player = players[i];
+             player.sendMessage(ChatColor.DARK_GRAY + "[Minecraft Dungeons] - " + ChatColor.GOLD + "Thank you for installing my plugin! -"
+                     +ChatColor.GREEN + "\n You can get exclusive beta participation, and teasers for the new HUGE update coming later this year! Just review on spigot, what you liked/disliked and request to be apart of the new update, happy fighting!");
+             player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.0F);
+           }
+
+           mcd.getConfig().set("first-time", Boolean.valueOf(false));
+           mcd.saveConfig();
+         }
+
+
+       }
+     }).runTaskLater(this, (20*60)*10);
    }
 
 
