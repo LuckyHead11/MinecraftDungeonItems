@@ -91,7 +91,7 @@ public class giveCommand implements CommandExecutor, TabCompleter {
                     ItemMeta meta = item.getItemMeta();
                     meta.setDisplayName(ChatColor.GOLD + plugin.getConfig().getString("artifact-names.totem-of-regeneration"));
                     ArrayList<String> lore = new ArrayList<>();
-                    lore.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "Spawns a regenerationPad");
+                    lore.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "Spawns a regeneration pad!");
                     meta.setLore(lore);
                     item.setItemMeta(meta);
                     player.sendMessage("There you go!");
@@ -124,7 +124,7 @@ public class giveCommand implements CommandExecutor, TabCompleter {
                     ItemMeta meta = item.getItemMeta();
                     meta.setDisplayName(ChatColor.GOLD + plugin.getConfig().getString("artifact-names.speed-boots"));
                     ArrayList<String> lore = new ArrayList<>();
-                    lore.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "Where these to gain speed!");
+                    lore.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "Wear these to gain speed!");
                     meta.setLore(lore);
                     item.setItemMeta(meta);
                     player.sendMessage("There you go!");
@@ -178,9 +178,9 @@ public class giveCommand implements CommandExecutor, TabCompleter {
                 } else if (args[1].equals("satchel_of_elements")) {
                     ItemStack item = new ItemStack(Material.POTION);
                     ItemMeta meta = item.getItemMeta();
-                    meta.setDisplayName(ChatColor.GOLD + "Satchel of elements");
+                    meta.setDisplayName(ChatColor.GOLD + plugin.getConfig().getString("artifact-names.satchel-of-elements"));
                     ArrayList<String> lore = new ArrayList<>();
-                    lore.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + plugin.getConfig().getString("artifact-names.satchel-of-elements"));
+                    lore.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "Has a chance to spawn lightning or set on fire to mobs!");
                     meta.setLore(lore);
                     item.setItemMeta(meta);
                     player.sendMessage("There you go!");

@@ -34,7 +34,7 @@ public class totem_of_regeneration implements Listener {
       ItemMeta meta = item.getItemMeta();
       meta.setDisplayName(ChatColor.GOLD + plugin.getConfig().getString("artifact-names.totem-of-regeneration"));
       ArrayList<String> lore = new ArrayList<>();
-      lore.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "Spawns a regenerationPad");
+      lore.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "Spawns a regeneration pad!");
       meta.setLore(lore);
       item.setItemMeta(meta);
       Player player = e.getPlayer();
