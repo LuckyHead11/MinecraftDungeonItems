@@ -33,7 +33,7 @@ import org.bukkit.inventory.ItemStack;
              ItemMeta meta = item.getItemMeta();
              meta.setDisplayName(ChatColor.GOLD + plugin.getConfig().getString("artifact-names.speed-boots"));
              ArrayList<String> lore = new ArrayList<>();
-             lore.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "Where these to gain speed!");
+             lore.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "Wear these to gain speed!");
              meta.setLore(lore);
              item.setItemMeta(meta);
              try {

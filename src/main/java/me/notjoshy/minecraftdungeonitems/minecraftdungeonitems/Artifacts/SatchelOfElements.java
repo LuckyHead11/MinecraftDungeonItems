@@ -34,7 +34,7 @@ import org.bukkit.entity.Entity;
 /* 33 */     ItemMeta meta = item.getItemMeta();
 /* 34 */     meta.setDisplayName(ChatColor.GOLD + plugin.getConfig().getString("artifact-names.satchel-of-elements"));
 /* 35 */     ArrayList<String> lore = new ArrayList<>();
-/* 36 */     lore.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "Has a change to lightning or setFire to mobs!");
+/* 36 */     lore.add(ChatColor.GOLD + "ABILITY: " + ChatColor.GOLD + "Has a chance to spawn lightning or set on fire to mobs!");
 /* 37 */     meta.setLore(lore);
 /* 38 */     item.setItemMeta(meta);
 /* 39 */     Player player = e.getPlayer();
